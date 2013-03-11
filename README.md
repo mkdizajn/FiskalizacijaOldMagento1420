@@ -132,6 +132,19 @@ CREATE TABLE IF NOT EXISTS `inchoo_fiskalizacija_invoice` (
 <?php /* END Custom added */ ?>
 ```
 
+- - -
+
+Mozda nebi trebalo ni iteraciju cijele tablice raditi.. nego recimo pomocu ovoga:
+
+```php
+
+$oid = $_invoice->getId();
+$fis = Mage::getModel("inchoo_fiskalizacija/invoice")->getCollection()->addFieldToFilter('invoice_entity_id', $oid )->getFirstItem();
+
+$fis1 = $fis["jir"];
+echo $fis1;
+```
+
 
 that's it!
 
